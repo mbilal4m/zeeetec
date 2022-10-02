@@ -1,0 +1,26 @@
+<odoo>
+	<data>
+		<record id="crm_lead_view_form" model="ir.ui.view">
+			<field name="name">crm.lead.fsm.form</field>
+			<field name="model">crm.lead</field>
+			<field name="inherit_id" ref="crm.crm_lead_view_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//form//header" position="inside">
+					<button name="%(mb_crm_fsm.crm_fsm_wizard_action)d" context="{'default_lead_id': active_id}" type="action" string="Create Field Service"/>
+				</xpath>
+				
+				<xpath expr="//div[@name='button_box']" position="inside">
+					<button class="oe_stat_button" type="object"
+						name="action_view_fsm" icon="fa-puzzle-piece" attrs="{'invisible': [('project_count', '=', 0)]}">
+						<div class="o_stat_info">
+							<field name="project_count" class="o_stat_value"/>
+							<span class="o_stat_text" attrs="{'invisible': [('project_count', '&lt;', 2)]}">Projects</span>
+							<span class="o_stat_text" attrs="{'invisible': [('project_count', '&gt;', 1)]}">Project</span>
+						</div>
+					</button>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>
