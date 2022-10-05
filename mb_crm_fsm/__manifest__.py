@@ -14,8 +14,8 @@
     'support': 'Muhammad Bilal mbilal4m@gmail.com',
 	"data": [
 		'security/ir.model.access.csv',
-		'views/crm_views.xml',
 		'wizard/crm_fsm_wizard_view.xml'
+		'views/crm_views.xml',
 		],
 	"auto_install": False,
 	"installable": True,
