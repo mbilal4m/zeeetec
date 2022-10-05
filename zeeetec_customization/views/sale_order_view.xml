@@ -1,0 +1,55 @@
+<odoo>
+	<data>
+		
+		<record id="view_quotation_tree" model="ir.ui.view">
+			<field name="name">sale.order.tree.customize</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_quotation_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_id']" position="after">
+					<field name="ref_number" optional="hide"/>
+					<field name="remark" optional="hide"/>
+				</xpath>
+			</field>
+		</record>
+		
+		<record id="view_order_form" model="ir.ui.view">
+			<field name="name">sale.order.form.customize</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='partner_shipping_id']" position="after">
+					<field name="ref_number"/>
+					<field name="remark"/>
+				</xpath>
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+					<field name="credit_period"/>
+				</xpath>
+				<xpath expr="//field[@name='tax_totals_json']" position="before">
+					<field name="total_item"/>
+					<field name="total_qty"/>
+					<field name="total_disc_amnt"/>
+				</xpath>
+				
+				<xpath expr="//page/field[@name='order_line']//tree//field[@name='discount']" position="after">
+					<field name="dis_amount" groups="product.group_discount_per_so_line" optional="show"/>
+					
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Sale order Searchbar -->
+		<record id="view_sales_order_filter_inherit_customize" model="ir.ui.view">
+            <field name="name">sale.order.search.inherit.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='my_sale_orders_filter']" position="after">
+                    <field name="ref_number"/>
+					<field name="remark"/>
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</odoo>

@@ -1,0 +1,55 @@
+<odoo>
+	<data>
+		
+		<record id="view_invoice_tree" model="ir.ui.view">
+			<field name="name">account.move.tree.customize</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_invoice_tree"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='date']" position="after">
+					<field name="ref_number" optional="hide"/>
+					<field name="remark" optional="hide"/>
+				</xpath>
+			</field>
+		</record>
+		
+		<record id="view_move_form" model="ir.ui.view">
+			<field name="name">account.move.form.customize</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='invoice_vendor_bill_id']" position="after">
+					<field name="ref_number"/>
+					<field name="remark"/>
+				</xpath>
+				<xpath expr="//group[@id='header_right_group']" position="inside">
+					<field name="credit_period"/>
+				</xpath>
+				<xpath expr="//field[@name='tax_totals_json']" position="before">
+					<field name="total_item"/>
+					<field name="total_qty"/>
+					<field name="total_disc_amnt"/>
+				</xpath>
+				
+				<xpath expr="//page/field[@name='invoice_line_ids']//tree//field[@name='discount']" position="after">
+					<field name="dis_amount" groups="product.group_discount_per_so_line" optional="show"/>
+					
+				</xpath>
+			</field>
+		</record>
+
+		<!-- Sale order Searchbar -->
+		<record id="view_account_move_filter_inherit_customize" model="ir.ui.view">
+            <field name="name">account.move.search.inherit.customize</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_move_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="ref_number"/>
+					<field name="remark"/>
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</odoo>
