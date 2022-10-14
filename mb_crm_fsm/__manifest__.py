@@ -13,9 +13,11 @@
 	"license": 'LGPL-3',
     'support': 'Muhammad Bilal mbilal4m@gmail.com',
 	"data": [
+		'security/security.xml',
 		'security/ir.model.access.csv',
 		'wizard/crm_fsm_wizard_view.xml',
 		'views/crm_views.xml',
+		'views/project_task.xml',
 		],
 	"auto_install": False,
 	"installable": True,

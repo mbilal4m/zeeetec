@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="res.groups" id="group_crm_create_survey">
+            <field name="name">Create Survey</field>
+        </record>
+
+        <record model="res.groups" id="group_crm_add_product">
+            <field name="name">Add Prodcuts on Survey</field>
+        </record>
+    </data>
+</odoo>
